@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
     
 
 :root {
@@ -41,7 +42,13 @@
         #D586E0 65.79%,
         #91A1FA 84.58%
     );
-    --gradient-background: #D586E0 0%, #91A1FA 98.93%;
+
+    --gradient-background: linear-gradient(
+        90deg,
+        #D586E0 0%,
+        #91A1FA 98.93%
+    );
+
     --gradient-content: #C7C9CC 0%, #3D3D3D 100%;
 
     /* Typography */
