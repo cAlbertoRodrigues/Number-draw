@@ -1,0 +1,20 @@
+.luck-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 482px;
+    height: 56px;
+    margin-top: 40px;
+    gap: 8px;
+
+    border: none;
+
+    background: var(--background-tertiary);
+    border-radius: 8px;
+
+    & span {
+        font: var(--label-md);
+        color: var(--content-primary);
+    }
+}

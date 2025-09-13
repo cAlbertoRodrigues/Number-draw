@@ -6,7 +6,7 @@
 .number-input{
   width: 86px;
   height: 56px;
-  padding: 8px;
+  padding: 8px 10px;
   background: var(--background-secondary);
   border: 2px solid transparent;
   border-radius: 8px;
@@ -14,7 +14,8 @@
 
   color: var(--content-primary);
   font: var(--display-sm);
-  text-align: center;            
+  text-align: center;
+  font-variant-numeric: tabular-nums;       
   caret-color: transparent;      
 
   -moz-appearance: textfield;
@@ -33,7 +34,7 @@
 
   &:focus{
     outline: none;
-    text-align: right;          
+    text-align: center;          
     background:
       linear-gradient(var(--background-secondary), var(--background-secondary)) padding-box,
       var(--gradient-border) border-box;
@@ -43,7 +44,7 @@
 .fake-caret{
   position: absolute;
   top: 50%;
-  right: 6px;                   
+  right: 30px;                   
   transform: translateY(-50%);
   width: 2px;                  
   height: 29px;                

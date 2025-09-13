@@ -4,8 +4,11 @@
     box-sizing: border-box;
 }
 
-
-    
+html, body {
+    width: 100%;
+    height: 100%;
+    background: url(../assets/shapes.png) repeat center/contain, var(--background-primary);
+}
 
 :root {
 
@@ -20,7 +23,8 @@
     /* Background */
 
     --background-primary: #020202;
-    --background-secondary: #24222E;
+    --background-secondary: #111012;
+    --background-tertiary: #24222E;
     --background-brand: #C58DE7;
     --brackground-gray: #3D3D3D;
 
@@ -49,25 +53,28 @@
         #91A1FA 98.93%
     );
 
-    --gradient-content: #C7C9CC 0%, #3D3D3D 100%;
+    --gradient-content: linear-gradient(
+        90deg,
+        #C7C9CC 0%,
+        #3D3D3D 100%);
 
     /* Typography */
 
-    --font-family-sora: 'Sora', sans-serif;
+    --font-family-sora: "Sora", sans-serif;
     --font-family-roboto-flex: 'Roboto Flex', sans-serif;
     --font-family-roboto-mono: 'Roboto Mono', monospace;
 
-    --display-lg: ExtraBold 57px/130% var(--font-family-sora);
-    --display-md: ExtraBold 40px/130% var(--font-family-sora);
-    --display-sm: Bold 32px/130% var(--font-family-sora);
+    --display-lg: 800 72px/130% var(--font-family-sora);
+    --display-md: 800 40px/130% var(--font-family-sora);
+    --display-sm: 700 32px/130% var(--font-family-sora);
 
-    --paragraph-lg: Medium 16px/150% var(--font-family-roboto-flex);
-    --paragraph-md: Medium 14px/150% var(--font-family-roboto-flex);
-    --paragraph-sm: Medium 12px/150% var(--font-family-roboto-flex);
-    --label-md: Bold 20px/150% var(var(--font-family-roboto-flex));
-    --label-sm: Bold 16px/150% var(--font-family-roboto-flex);
+    --paragraph-lg: 500 16px/150% var(--font-family-roboto-flex);
+    --paragraph-md: 500 14px/150% var(--font-family-roboto-flex);
+    --paragraph-sm: 500 12px/150% var(--font-family-roboto-flex);
+    --label-md: 700 20px/150% var(--font-family-roboto-flex);
+    --label-sm: 700 16px/150% var(--font-family-roboto-flex);
 
-    --overline: Bold 16px/150% var(--font-family-roboto-mono);
+    --overline: 700 16px/150% var(--font-family-roboto-mono);
 
 
 }
