@@ -1,85 +1,135 @@
-/* Estilos da área de resultados e dos quadrados animados */
+.btn-reset {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 482px;
+  height: 56px;
+  margin-top: 40px;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  background: var(--background-tertiary);
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover { background: var(--background-secondary); }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: conic-gradient(from var(--angle,0deg), #77c0af,#d1dc97,#e9a9b3,#d586e0,#91a1fa,#77c0af);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    padding: 2px;
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+  }
+
+  &:hover::before { opacity: 1; }
+
+  > * { position: relative; z-index: 1; }
+
+  img { width: 24px; height: 24px; transition: transform .3s ease; }
+  &:hover img { animation: rotate-icon 1s linear infinite; }
+}
+
+@keyframes rotate-icon { from { transform: rotate(0) } to { transform: rotate(360deg) } }
 
 .result {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  &.show { display: flex; }
+
+  h2 { font: var(--label-md); color: var(--content-primary); }
+
+  span {
+    display: flex;
+    font: var(--overline);
+    color: var(--content-secondary);
+    margin-top: .5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
 }
 
-.result h2 {
-  font: var(--label-md);
-  color: var(--content-primary);
+:root {
+  --rotate-duration: 2s;
+  --fade-duration: .6s;
 }
 
-.result span {
-  display: flex;
-  font: var(--overline);
-  color: var(--content-secondary);
-  margin-top: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.result p {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 2.5rem;
-}
-
-/* Quadrados dos números */
 .number-square {
   position: relative;
-  background: var(--accent-pink);
-  border-radius: 1.5rem;
   width: 5rem;
   height: 5rem;
+  margin: .5rem;
+  border-radius: 1.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem;
-  perspective: 1000px;
-}
-
-.number-square-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.number-square-front,
-.number-square-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font: var(--display-md);
-  color: var(--color-inverse);
+  perspective: 1000px;
+  color: transparent;
+  animation: textReveal .4s ease forwards, textAbsorb var(--fade-duration) ease forwards;
+  animation-delay: calc(var(--rotate-duration) / 2), var(--rotate-duration);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: var(--accent-pink);
+    z-index: 0;
+    opacity: 1;
+    transform: rotate(0deg) scale(.6);
+    animation: spinScale var(--rotate-duration) ease-in-out forwards, faceFade var(--fade-duration) ease forwards;
+    animation-delay: 0s, var(--rotate-duration);
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
-.number-square-front {
-  background: var(--accent-pink);
-  transform: rotateY(0deg);
+@keyframes spinScale {
+  0%   { transform: rotate(-360deg) scale(.6); }
+  50%  { transform: rotate(-360deg) scale(.85); }
+  100% { transform: rotate(0deg)    scale(1); }
 }
 
-.number-square-back {
-  background: var(--accent-pink);
-  transform: rotateY(180deg);
+@keyframes faceFade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
-/* Animações */
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(180deg); }
+@keyframes textReveal {
+  from { color: transparent; }
+  to   { color: var(--color-inverse); }
+}
+
+@keyframes textAbsorb {
+  from { color: var(--color-inverse); }
+  to   { color: var(--accent-pink); }
 }

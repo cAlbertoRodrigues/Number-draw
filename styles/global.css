@@ -10,6 +10,12 @@ html, body {
     background: url(../assets/shapes.png) repeat center/contain, var(--background-primary);
 }
 
+.result { display: none; }
+.result.show { display: flex; }
+.has-result .intro { display: none; }
+
+
+
 :root {
 
     /* Content */

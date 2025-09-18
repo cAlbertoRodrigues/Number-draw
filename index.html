@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorteador de números</title>
-
-  <!-- Importa os estilos existentes -->
-  <link rel="stylesheet" href="/styles/styles.css">
-
+  <link rel="stylesheet" href="styles/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,700;1,700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
@@ -28,7 +25,6 @@
           <h3>Como funciona o sorteador de números?</h3>
         </div>
         <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</p>
-
         <div>
           <img src="assets/icons/user.svg" alt="">
           <h3>Posso escolher o intervalo dos números?</h3>
@@ -38,8 +34,10 @@
     </header>
 
     <main>
-      <h3>QUERO SORTEAR:</h3>
-      <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
+      <section class="intro">
+        <h3>QUERO SORTEAR:</h3>
+        <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
+      </section>
 
       <div id="form-container">
         <div class="number-container">
@@ -50,7 +48,6 @@
               <span class="fake-caret" aria-hidden="true"></span>
             </div>
           </div>
-
           <div>
             <h4>DE</h4>
             <div class="number-wrapper">
@@ -58,7 +55,6 @@
               <span class="fake-caret" aria-hidden="true"></span>
             </div>
           </div>
-
           <div>
             <h4>ATÉ</h4>
             <div class="number-wrapper">
@@ -66,10 +62,8 @@
               <span class="fake-caret" aria-hidden="true"></span>
             </div>
           </div>
-
           <div class="toggle-row">
             <div class="toggle-btn">
-              <!-- O id "toggle" permite ao script saber se repetição é permitida -->
               <input type="checkbox" class="checkbox" id="toggle">
               <label class="switch" for="toggle">
                 <span class="slider"></span>
@@ -78,19 +72,19 @@
             <p>Não repetir número</p>
           </div>
         </div>
-        <button class="luck-btn" id="btn-sort">
+
+        <button class="luck-btn btn" id="btn-sort">
           <span>SORTEAR <img src="assets/icons/arrow-right.svg" alt=""></span>
         </button>
       </div>
 
-      <!-- Secção de resultados (inicialmente oculta) -->
-      <div class="result" id="result" style="display: none;">
+      <div class="result" id="result">
         <h2>RESULTADO DO SORTEIO</h2>
         <span id="result-order">1° RESULTADO</span>
         <p id="result-numbers"></p>
         <button class="btn-reset" id="btn-reset">
           <span>SORTEAR NOVAMENTE</span>
-          <img src="assets/icons/reset.svg" alt="Reset icon">
+          <img src="assets/icons/play.svg" alt="Reset icon">
         </button>
       </div>
     </main>

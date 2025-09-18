@@ -77,3 +77,28 @@ function displayResults(numbers) {
   document.getElementById('form-container').style.display = 'none';
   document.getElementById('result').style.display = 'block';
 }
+
+const btn = document.querySelector('.luck-btn');
+let angle = 0;
+
+function tick(){
+  angle = (angle + 1) % 360;
+  btn.style.setProperty('--angle', angle + 'deg');
+  requestAnimationFrame(tick);
+}
+tick();
+
+const resultDiv = document.getElementById('result');
+const btnSort = document.getElementById('btn-sort');
+const btnReset = document.getElementById('btn-reset');
+
+btnSort.addEventListener('click', () => {
+  document.body.classList.add('has-result');
+  resultDiv.classList.add('show');
+});
+
+btnReset.addEventListener('click', () => {
+  document.body.classList.remove('has-result');
+  resultDiv.classList.remove('show');
+});
+

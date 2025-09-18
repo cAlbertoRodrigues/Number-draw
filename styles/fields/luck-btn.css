@@ -3,69 +3,125 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 482px;
   height: 56px;
   margin-top: 40px;
   gap: 8px;
-
   border: none;
   border-radius: 8px;
   background: var(--background-tertiary);
   cursor: pointer;
   overflow: hidden;
-}
 
-.luck-btn span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font: var(--label-md);
-  color: var(--content-primary);
-}
+  &:hover {
+    background: var(--background-secondary);
+  }
 
-.luck-btn span img {
-  width: 20px;
-  height: 20px;
-  display: block;
-  will-change: transform;
-}
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: var(--label-md);
+    color: var(--content-primary);
 
-.luck-btn:hover span img,
-.luck-btn:focus-visible span img {
-  animation: arrow-bounce .8s ease-in-out infinite;
+    img {
+      width: 20px;
+      height: 20px;
+      display: block;
+      will-change: transform;
+    }
+  }
+
+  &:hover span img,
+  &:focus-visible span img {
+    animation: arrow-bounce .8s ease-in-out infinite;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: conic-gradient(from var(--angle,0deg),
+      #77c0af, #d1dc97, #e9a9b3, #d586e0, #91a1fa, #77c0af);
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                   linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    padding: 2px;
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  .b-seg {
+    position: absolute;
+    background: var(--gradient-border);
+    pointer-events: none;
+    opacity: 0;
+    transition: width .35s linear, height .35s linear, opacity .2s ease;
+  }
+
+  .b-top {
+    top: 0; left: 0;
+    height: 2px; width: 0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .b-right {
+    top: 0; right: 0;
+    width: 2px; height: 0;
+  }
+
+  .b-bottom {
+    bottom: 0; left: 0;
+    height: 2px; width: 0;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .b-left {
+    top: 0; left: 0;
+    width: 2px; height: 0;
+  }
+
+  > span {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @keyframes arrow-bounce {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(6px); }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
   100% { transform: translateX(0); }
 }
 
-/* segmentos da borda controlados pelo JS */
-.luck-btn .b-seg {
-  position: absolute;
-  background: var(--gradient-border);
-  pointer-events: none;
-  opacity: 0;
-  transition: width .35s linear, height .35s linear, opacity .2s ease;
-}
+.btn {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: conic-gradient(from var(--angle,0deg),
+      #77c0af, #d1dc97, #e9a9b3, #d586e0, #91a1fa, #77c0af);
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                   linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    padding: 2px;
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+  }
 
-.luck-btn .b-top {
-  top: 0; left: 0;
-  height: 2px; width: 0;
-  border-radius: 8px 8px 0 0;
-}
-.luck-btn .b-right {
-  top: 0; right: 0;
-  width: 2px; height: 0;
-}
-.luck-btn .b-bottom {
-  bottom: 0; left: 0;
-  height: 2px; width: 0;
-  border-radius: 0 0 8px 8px;
-}
-.luck-btn .b-left {
-  top: 0; left: 0;
-  width: 2px; height: 0;
+  > span {
+    position: relative;
+    z-index: 1;
+  }
 }

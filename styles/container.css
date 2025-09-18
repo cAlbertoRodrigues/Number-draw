@@ -49,6 +49,41 @@
       color: var(--content-primary);
       line-height: 1.1;
     }
+
+    & h3 {
+      font: var(--paragraph-md);
+      color: var(--content-brand);
+    }
+
+    & p {
+      font: var(--paragraph-sm);
+      color: var(--content-primary);
+    }
+
+    & article {
+      display: grid;
+      row-gap: 8px;
+
+      & > div {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+
+        & img {
+          width: 18px;
+          height: 18px;
+          flex: 0 0 18px;
+        }
+
+        & h3 {
+          margin: 0;
+        }
+      }
+
+      & > p {
+        margin: 4px 0 16px 24px;
+      }
+    }
   }
 
   & main {
@@ -110,11 +145,6 @@
       flex-direction: column;
       gap: 8px;
 
-      & img {
-        width: 20px;
-        height: 20px;
-      }
-
       & h3 { 
         margin: 0;
         font: var(--paragraph-md);
@@ -123,15 +153,25 @@
         align-items: center;
         gap: 0;
 
-
         &::before {
+          content: "";
           inline-size: 18px;
           block-size: 18px;
           background: currentColor;
+          margin-right: 6px;
           -webkit-mask: url("assets/icons/user.svg") no-repeat center / contain;
                   mask: url("assets/icons/user.svg") no-repeat center / contain;
-          margin-right: 6px;
         }
+      }
+
+      &:first-of-type h3::before {
+        -webkit-mask: url("assets/icons/help.svg") no-repeat center / contain;
+                mask: url("assets/icons/help.svg") no-repeat center / contain;
+      }
+
+      &:nth-of-type(2) h3::before {
+        -webkit-mask: url("assets/icons/settings.svg") no-repeat center / contain;
+                mask: url("assets/icons/settings.svg") no-repeat center / contain;
       }
 
       & p {
@@ -139,7 +179,6 @@
         font: var(--paragraph-sm);
         color: var(--content-secondary);
       }
-
     }
   }
 }
@@ -247,10 +286,20 @@
         inline-size: 18px;
         block-size: 18px;
         background: currentColor;
+        margin-right: 6px;
         -webkit-mask: url("assets/icons/user.svg") no-repeat center / contain;
                 mask: url("assets/icons/user.svg") no-repeat center / contain;
-        margin-right: 6px;
       }
+    }
+
+    .faq-item:first-of-type h3::before {
+      -webkit-mask: url("assets/icons/help.svg") no-repeat center / contain;
+              mask: url("assets/icons/help.svg") no-repeat center / contain;
+    }
+
+    .faq-item:nth-of-type(2) h3::before {
+      -webkit-mask: url("assets/icons/settings.svg") no-repeat center / contain;
+              mask: url("assets/icons/settings.svg") no-repeat center / contain;
     }
 
     .faq-item p{
@@ -273,7 +322,6 @@
   }
 }
 
-/* utilitário para leitores de tela (já que criamos um h2 oculto no FAQ) */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
