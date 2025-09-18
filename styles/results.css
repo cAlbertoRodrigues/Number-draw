@@ -1,0 +1,85 @@
+/* Estilos da área de resultados e dos quadrados animados */
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.result h2 {
+  font: var(--label-md);
+  color: var(--content-primary);
+}
+
+.result span {
+  display: flex;
+  font: var(--overline);
+  color: var(--content-secondary);
+  margin-top: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.result p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* Quadrados dos números */
+.number-square {
+  position: relative;
+  background: var(--accent-pink);
+  border-radius: 1.5rem;
+  width: 5rem;
+  height: 5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  perspective: 1000px;
+}
+
+.number-square-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.number-square-front,
+.number-square-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--display-md);
+  color: var(--color-inverse);
+}
+
+.number-square-front {
+  background: var(--accent-pink);
+  transform: rotateY(0deg);
+}
+
+.number-square-back {
+  background: var(--accent-pink);
+  transform: rotateY(180deg);
+}
+
+/* Animações */
+@keyframes spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(180deg); }
+}

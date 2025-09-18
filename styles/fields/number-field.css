@@ -1,9 +1,8 @@
 .number-wrapper{
   position: relative;
   display: inline-block;
-}
 
-.number-input{
+  & .number-input{
   width: 86px;
   height: 56px;
   padding: 8px 10px;
@@ -15,8 +14,6 @@
   color: var(--content-primary);
   font: var(--display-sm);
   text-align: center;
-  font-variant-numeric: tabular-nums;       
-  caret-color: transparent;      
 
   -moz-appearance: textfield;
 
@@ -24,6 +21,12 @@
   &::-webkit-outer-spin-button{
     -webkit-appearance: none;
     margin: 0;
+  }
+
+  &.caret-custom {
+    caret-shape: block;
+    caret-animation: manual;
+    animation: old-caret 2s infinite;
   }
 
   &:hover{
@@ -40,27 +43,16 @@
       var(--gradient-border) border-box;
   }
 }
-
-.fake-caret{
-  position: absolute;
-  top: 50%;
-  right: 30px;                   
-  transform: translateY(-50%);
-  width: 2px;                  
-  height: 29px;                
-  background: var(--content-primary);
-  border-radius: 99px;
-  pointer-events: none;
-  display: none;
-  animation: caret-pulse 2.8s ease-in-out infinite;
-  transform-origin: left center;
 }
 
-.number-input:focus + .fake-caret{
-  display: block;
+@keyframes old-caret {
+  from,
+  50% {
+    caret-color: var(--content-primary);
+  } 
+  75%,
+  to {
+    caret-color: transparent;
+  }
 }
 
-@keyframes caret-pulse{
-  0%,100%{ transform: translateY(-50%) scaleX(1);   opacity:.95;}
-  50%    { transform: translateY(-50%) scaleX(1); opacity:0;}
-}
