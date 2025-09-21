@@ -1,4 +1,4 @@
 @import url(global.css);
-@import url(/styles/fields/index.css);
+@import url(fields/index.css);
 @import url(container.css);
 @import url(results.css);

@@ -133,3 +133,8 @@
   from { color: var(--color-inverse); }
   to   { color: var(--accent-pink); }
 }
+
+@keyframes spin {
+  from { transform: rotateY(0deg);}
+  to { transform: rotateY(360deg);}
+}
